@@ -5,6 +5,10 @@ int main()
     char *userName = (char *)malloc(MAXLEN * sizeof(char));
     userName = getlogin();
 
+    if (userName == NULL) {
+        userName = "aayush_ad";
+    }
+
     char *hostname = (char *)malloc(MAXLEN * sizeof(char));
     gethostname(hostname, MAXLEN);
 
