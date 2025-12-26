@@ -1,5 +1,5 @@
-all: MyShell.o MyCd.o MyFunc.o Myls.o Mycp.o Mymv.o Myps.o Mygrep.o Help.o
-	gcc MyShell.o MyFunc.o MyCd.o Myls.o Mycp.o Mymv.o  Myps.o  Mygrep.o Help.o -lreadline -o myShell && rm *.o
+myShell: MyShell.o MyCd.o MyFunc.o Myls.o Mycp.o Mymv.o Myps.o Mygrep.o Help.o
+	gcc MyShell.o MyFunc.o MyCd.o Myls.o Mycp.o Mymv.o  Myps.o  Mygrep.o Help.o -lreadline -o myShell
 
 MyShell.o: MyShell.c
 	gcc -c -g MyShell.c

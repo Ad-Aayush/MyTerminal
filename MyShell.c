@@ -2,11 +2,10 @@
 
 int main()
 {
-    char *userName = (char *)malloc(MAXLEN * sizeof(char));
-    userName = getlogin();
+    char *userName = getlogin();
 
     if (userName == NULL) {
-        userName = "aayush_ad";
+        userName = "aayushad";
     }
 
     char *hostname = (char *)malloc(MAXLEN * sizeof(char));
@@ -15,10 +14,10 @@ int main()
     char *query = (char *)malloc(MAXLEN * sizeof(char));
     // char query[MAXLEN];
     memset(query, '\0', MAXLEN);
-    char dir[MAXLEN];
+    char *dir = (char *)malloc(MAXLEN * sizeof(char));
     setDir(dir, userName);
     char *arg = setArg(userName, hostname, dir);
-    char last[MAXLEN];
+    char *last = (char*)malloc(MAXLEN * sizeof(char));
     memset(last, '\0', MAXLEN);
     while (((query = readline(arg))) != NULL)
     {
