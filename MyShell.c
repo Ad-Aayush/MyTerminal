@@ -54,8 +54,10 @@ int main()
         {
             mygrep(query);
         }
-        else
+        else {
             validityQuery = system(query); // Stores the return value of system function(that is 0 if command is valid)
+            printf("\nDEFAULT\n");
+        }
         cd(query, validityQuery, userName);
 
         setDir(dir, userName);
