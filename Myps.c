@@ -57,7 +57,7 @@ void myps(char query[])
     }
     char new2[MAXLEN];
     memset(new2, '\0', MAXLEN);
-    for (int i = 5; i < strlen(self2); i++)
+    for (int i = 5; self2[i] != '\0'; i++)
     {
         new2[i - 5] = self2[i];
     }
@@ -73,7 +73,7 @@ void myps(char query[])
     {
         // printf("%s\n", self2);
         bool flag = 1;
-        for (int i = 0; i < strlen(fileptr->d_name); i++)
+        for (int i = 0; fileptr->d_name[i] != '\0'; i++)
         {
             if (!isdigit(fileptr->d_name[i]))
             {
@@ -136,7 +136,7 @@ void myps(char query[])
             int seconds = tim % 60;          // Calculate seconds
             char temp[MAXLEN];
             memset(temp, '\0', MAXLEN);
-            for (int i = 1; i < strlen(procInfo->cmd); i++)
+            for (int i = 1; procInfo->cmd[i] != '\0'; i++)
             {
                 temp[i - 1] = procInfo->cmd[i];
             }
@@ -161,7 +161,7 @@ void myps(char query[])
             {
                 char new[MAXLEN];
                 memset(new, '\0', MAXLEN);
-                for (int i = 5; i < strlen(procInfo->tty); i++)
+                for (int i = 5; procInfo->tty[i] != '\0'; i++)
                 {
                     new[i - 5] = procInfo->tty[i];
                 }

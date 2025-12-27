@@ -3,7 +3,7 @@
 // Checks whether a string is just empty spaces(returns false in that case), returns true otherwise
 bool isValidString(char query[])
 {
-    for (int i = 0; i < strlen(query); i++)
+    for (int i = 0; i < query[i] != '\0'; i++)
         if (query[i] != ' ')
             return true;
 
@@ -61,7 +61,7 @@ char *convertToString(char query[], int *index)
     else if (query[*index] == '\'')
         breakChar = query[(*index)++];
 
-    for (; *index < strlen(query); (*index)++)
+    for (; *index < query[*index] != '\0'; (*index)++)
         if (query[*index] != breakChar)
             address[k++] = query[*index];
         else
@@ -77,18 +77,13 @@ char *convertToString(char query[], int *index)
 bool checkHome(char cwd[], char userName[])
 {
     char *homePath = (char *)malloc(MAXLEN * sizeof(char));
-    strcpy(homePath, "/home/");
+    sprintf(homePath, "/home/%s", userName);
     int n = strlen(homePath);
-
-    for (int i = 0; i < strlen(userName); i++)
-        homePath[n++] = userName[i];
-
-    homePath[n] = '\0';
 
     if (strlen(cwd) < strlen(homePath))
         return false;
 
-    for (int i = 0; i < strlen(homePath); i++)
+    for (int i = 0; i < homePath[i] != '\0'; i++)
         if (homePath[i] != cwd[i])
             return false;
 
@@ -106,7 +101,7 @@ void setDir(char dir[], char userName[])
         int lenDir = 1;
         dir[0] = '~';
 
-        for (int i = lenUptoHome; i < strlen(cwd); i++)
+        for (int i = lenUptoHome; cwd[i] != '\0'; i++)
             dir[lenDir++] = cwd[i];
 
         dir[lenDir++] = '$';
@@ -131,19 +126,20 @@ char *setArg(char userName[], char hostName[], char dir[])
     char r[] = red;
     char c[] = cyan;
     char re[] = reset;
-    for (int i = 0; i < strlen(r); i++)
+    for (int i = 0; r[i] != '\0'; i++)
         arg[k++] = r[i];
-    for (int i = 0; i < strlen(userName); i++)
+    for (int i = 0; userName[i] != '\0'; i++)
         arg[k++] = userName[i];
     arg[k++] = '@';
-    for (int i = 0; i < strlen(hostName); i++)
+    for (int i = 0; hostName[i] != '\0'; i++)
         arg[k++] = hostName[i];
     arg[k++] = ':';
-    for (int i = 0; i < strlen(c); i++)
+    for (int i = 0; c[i] != '\0'; i++)
         arg[k++] = c[i];
-    for (int i = 0; i < strlen(dir) - 2; i++)
+    int sz = strlen(dir);
+    for (int i = 0; i < sz - 2; i++)
         arg[k++] = dir[i];
-    for (int i = 0; i < strlen(re); i++)
+    for (int i = 0; re[i] != '\0'; i++)
         arg[k++] = re[i];
     arg[k++] = '$';
     arg[k++] = ' ';

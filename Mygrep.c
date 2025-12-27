@@ -60,7 +60,7 @@ void mygrep(char query[])
     }
     if (I != -1)
     {
-        for (int i = 0; i < strlen(pattern); i++)
+        for (int i = 0; pattern[i] != '\0'; i++)
             pattern[i] = tolower(pattern[i]);
     }
     pairStr fir;
@@ -96,7 +96,7 @@ void mygrep(char query[])
     while (fgets(str, MAXLEN, fp) != NULL)
     {
 
-        for (int i = 0; i < strlen(str); i++)
+        for (int i = 0; str[i] != '\0'; i++)
         {
             if (isprint(str[i]) || str[i] == '\n' || str[i] == '\t')
                 printable++;
@@ -132,10 +132,10 @@ void mygrep(char query[])
         int m = strlen(str);
         if (I != -1)
         {
-            for (int i = 0; i < strlen(str); i++)
+            for (int i = 0; str[i] != '\0'; i++)
                 str[i] = tolower(str[i]);
         }
-        for (int i = 0; i < strlen(str); i++)
+        for (int i = 0; str[i] != '\0'; i++)
         {
             int j = 0;
             if (w == -1)
@@ -241,7 +241,7 @@ void mygrep(char query[])
 
                     fLine++;
                 }
-                for (; i < strlen(str); i++)
+                for (; str[i] != '\0'; i++)
                 {
                     if (C == -1)
                         if (str[i] != '\n')
